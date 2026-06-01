@@ -49,5 +49,55 @@
       }
     ],
     "observation": "MusT exactly localizes the vocal onset at 2:00, while the baseline models predict substantially earlier timestamps."
-  }
+  },
+  {
+  "id": "tad-1290949",
+  "title": "TAD · Harmony shifts while drums ease back",
+  "task": "TAD",
+  "audio_id": "1290949",
+  "duration": 134,
+  "audio": "assets/audios/TAD_example.mp3",
+  "question": "Describe the musical change at 1:22 in detail.",
+  "ground_truth_text": "As the harmony moves away from its previous tonal color toward a G-major-related sound, the drums ease back, making the rhythmic presence more subdued.",
+  "ground_truth": [
+    {
+      "type": "point",
+      "time": 82,
+      "label": "Transition 1:22"
+    }
+  ],
+  "predictions": [
+    {
+      "model": "MusT",
+      "text": "The harmony shifts from C major to G major as the drums ease back, softening their attack while the bass disappears from the mix.",
+      "type": "text",
+      "score": "Strong",
+      "kind": "ours",
+      "observation": "Captures the G-major-related harmonic movement and the drums easing back, matching the subdued rhythmic transition."
+    },
+    {
+      "model": "GPT Audio 1.5",
+      "text": "Drums and bass enter, creating a more dynamic rhythmic texture.",
+      "type": "text",
+      "score": "Wrong direction",
+      "kind": "closed",
+      "observation": "Predicts drums and bass entering, while the reference says the drums ease back and the rhythm becomes more subdued."
+    },
+    {
+      "model": "AudioFlamingo-Next",
+      "text": "The music moves into a more intense section with a driving rhythm.",
+      "type": "text",
+      "score": "Wrong direction",
+      "kind": "open",
+      "observation": "Describes an intensification, but the ground truth describes reduced rhythmic presence."
+    }
+  ],
+  "key_evidence": [
+    "G-major-related harmonic movement",
+    "drums ease back",
+    "softer drum attack",
+    "more subdued rhythmic presence"
+  ],
+  "observation": "MusT captures both the harmonic shift toward G major and the reduced drum/rhythmic intensity, while the selected baselines predict the opposite direction of change."
+}
 ]
