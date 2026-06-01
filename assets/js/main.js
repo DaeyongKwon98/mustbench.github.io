@@ -144,6 +144,24 @@ function setupDemo(demos) {
   renderDemo(demos[0]);
 }
 
+function getModelTypeClass(type) {
+  const normalized = String(type).toLowerCase();
+
+  if (normalized.includes("ours")) {
+    return "type-ours";
+  }
+
+  if (normalized.includes("open")) {
+    return "type-open";
+  }
+
+  if (normalized.includes("closed")) {
+    return "type-closed";
+  }
+
+  return "";
+}
+
 function renderLeaderboard(rows) {
   const container = document.getElementById("leaderboard");
 
@@ -151,12 +169,14 @@ function renderLeaderboard(rows) {
 
   const body = sorted
     .map((row, index) => {
-      const isOurs = row.type === "Ours";
+      const typeClass = getModelTypeClass(row.type);
+
       return `
-        <tr ${isOurs ? 'style="background: rgba(22, 163, 74, 0.08);"' : ""}>
+        <tr class="${typeClass}">
           <td>${index + 1}</td>
           <td><strong>${row.model}</strong></td>
           <td>${row.type}</td>
+          <td>${row.size ?? "-"}</td>
           <td>${row.tsg}</td>
           <td>${row.ltr}</td>
           <td>${row.tad}</td>
@@ -175,6 +195,7 @@ function renderLeaderboard(rows) {
           <th>Rank</th>
           <th>Model</th>
           <th>Type</th>
+          <th>Size</th>
           <th>TSG</th>
           <th>LTR</th>
           <th>TAD</th>
