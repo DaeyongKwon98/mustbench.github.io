@@ -1,0 +1,32 @@
+[
+  {
+    "abbr": "TSG",
+    "name": "Temporal Source Grounding",
+    "description": "Find when a specific instrument or vocal first appears or finally disappears.",
+    "metric": "Hit@3s"
+  },
+  {
+    "abbr": "LTR",
+    "name": "Local Transition Recognition",
+    "description": "Select which musical change occurs at a given timestamp.",
+    "metric": "Accuracy"
+  },
+  {
+    "abbr": "TAD",
+    "name": "Transition-Aware Description",
+    "description": "Generate a free-form description of the transition around a timestamp.",
+    "metric": "METEOR / CLAP"
+  },
+  {
+    "abbr": "GTO",
+    "name": "Global Temporal Ordering",
+    "description": "Determine the chronological order of multiple transition descriptions.",
+    "metric": "Accuracy"
+  },
+  {
+    "abbr": "MTR",
+    "name": "Mood Trajectory Reasoning",
+    "description": "Localize the highest or lowest emotional intensity intervals in the track.",
+    "metric": "Temporal IoU / F1"
+  }
+]
