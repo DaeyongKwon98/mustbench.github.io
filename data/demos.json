@@ -1,0 +1,90 @@
+[
+  {
+    "id": "tsg-guitar-onset",
+    "title": "TSG · Guitar onset localization",
+    "task": "TSG",
+    "duration": 180,
+    "audio": "assets/audio/demo_tsg.mp3",
+    "question": "When does the electric guitar first start to play?",
+    "ground_truth_text": "0:45",
+    "ground_truth": [
+      {
+        "type": "point",
+        "time": 45,
+        "label": "GT 0:45"
+      }
+    ],
+    "predictions": [
+      {
+        "model": "Qwen2.5-Omni 7B",
+        "text": "1:00",
+        "type": "point",
+        "time": 60,
+        "score": 42,
+        "kind": "base"
+      },
+      {
+        "model": "MusicFlamingo 8B",
+        "text": "0:50",
+        "type": "point",
+        "time": 50,
+        "score": 79,
+        "kind": "other"
+      },
+      {
+        "model": "MUST 7B",
+        "text": "0:46",
+        "type": "point",
+        "time": 46,
+        "score": 96,
+        "kind": "ours"
+      }
+    ]
+  },
+  {
+    "id": "mtr-arousal",
+    "title": "MTR · Highest arousal interval",
+    "task": "MTR",
+    "duration": 260,
+    "audio": "assets/audio/demo_mtr.mp3",
+    "question": "When is the highest arousal duration in this track?",
+    "ground_truth_text": "2:05–2:40",
+    "ground_truth": [
+      {
+        "type": "interval",
+        "start": 125,
+        "end": 160,
+        "label": "GT 2:05–2:40"
+      }
+    ],
+    "predictions": [
+      {
+        "model": "Qwen2.5-Omni 7B",
+        "text": "1:00–3:00",
+        "type": "interval",
+        "start": 60,
+        "end": 180,
+        "score": 38,
+        "kind": "base"
+      },
+      {
+        "model": "Gemini 2.5 Flash",
+        "text": "2:00–2:50",
+        "type": "interval",
+        "start": 120,
+        "end": 170,
+        "score": 74,
+        "kind": "other"
+      },
+      {
+        "model": "MUST 7B",
+        "text": "2:06–2:39",
+        "type": "interval",
+        "start": 126,
+        "end": 159,
+        "score": 94,
+        "kind": "ours"
+      }
+    ]
+  }
+]
