@@ -260,3 +260,21 @@ pre {
     grid-template-columns: 1fr;
   }
 }
+
+#leaderboard tbody tr.type-ours {
+  background: rgba(22, 163, 74, 0.12);
+}
+
+#leaderboard tbody tr.type-open {
+  background: rgba(37, 99, 235, 0.08);
+}
+
+#leaderboard tbody tr.type-closed {
+  background: rgba(124, 58, 237, 0.08);
+}
+
+#leaderboard tbody tr.type-ours:hover,
+#leaderboard tbody tr.type-open:hover,
+#leaderboard tbody tr.type-closed:hover {
+  filter: brightness(0.98);
+}
