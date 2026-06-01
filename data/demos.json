@@ -16,7 +16,7 @@
     ],
     "predictions": [
       {
-        "model": "MUST 7B",
+        "model": "MusT",
         "text": "2:00",
         "type": "point",
         "time": 120,
@@ -48,6 +48,6 @@
         "kind": "open"
       }
     ],
-    "observation": "MUST exactly localizes the vocal onset at 2:00, while the baseline models predict substantially earlier timestamps."
+    "observation": "MusT exactly localizes the vocal onset at 2:00, while the baseline models predict substantially earlier timestamps."
   }
 ]
