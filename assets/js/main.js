@@ -162,6 +162,20 @@ function getModelTypeClass(type) {
   return "";
 }
 
+function formatScore(value) {
+  if (value === null || value === undefined || value === "--") {
+    return "-";
+  }
+
+  const number = Number(value);
+
+  if (Number.isNaN(number)) {
+    return value;
+  }
+
+  return number.toFixed(1);
+}
+
 function renderLeaderboard(rows) {
   const container = document.getElementById("leaderboard");
 
@@ -177,12 +191,12 @@ function renderLeaderboard(rows) {
           <td><strong>${row.model}</strong></td>
           <td>${row.type}</td>
           <td>${row.size ?? "-"}</td>
-          <td>${row.tsg}</td>
-          <td>${row.ltr}</td>
-          <td>${row.tad}</td>
-          <td>${row.gto}</td>
-          <td>${row.mtr}</td>
-          <td><strong>${row.overall}</strong></td>
+          <td>${formatScore(row.tsg)}</td>
+          <td>${formatScore(row.ltr)}</td>
+          <td>${formatScore(row.tad)}</td>
+          <td>${formatScore(row.gto)}</td>
+          <td>${formatScore(row.mtr)}</td>
+          <td><strong>${formatScore(row.overall)}</strong></td>
         </tr>
       `;
     })
