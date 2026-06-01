@@ -1,136 +1,122 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>MUSTBENCH</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      max-width: 900px;
-      margin: 0 auto;
-      padding: 40px 20px;
-      line-height: 1.6;
-      color: #222;
-    }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    header {
-      text-align: center;
-      padding: 60px 0;
-    }
+  <title>MUSTBENCH | Music Temporal Grounding</title>
+  <meta name="description" content="MUSTBENCH: Benchmarking and Advancing Temporal Grounding in Music LLMs" />
 
-    h1 {
-      font-size: 48px;
-      margin-bottom: 10px;
-    }
-
-    .subtitle {
-      font-size: 22px;
-      color: #555;
-    }
-
-    .buttons a {
-      display: inline-block;
-      margin: 8px;
-      padding: 10px 16px;
-      background: #222;
-      color: white;
-      text-decoration: none;
-      border-radius: 6px;
-    }
-
-    section {
-      margin: 50px 0;
-    }
-
-    .card {
-      border: 1px solid #ddd;
-      border-radius: 10px;
-      padding: 20px;
-      margin: 12px 0;
-      background: #fafafa;
-    }
-
-    footer {
-      margin-top: 80px;
-      text-align: center;
-      color: #777;
-      font-size: 14px;
-    }
-  </style>
+  <link rel="stylesheet" href="assets/css/style.css" />
 </head>
-<body>
 
-  <header>
-    <h1>MUSTBENCH</h1>
-    <p class="subtitle">Benchmarking and Advancing Temporal Grounding in Music LLMs</p>
+<body>
+  <nav class="nav">
+    <div class="nav-inner">
+      <div class="brand">♪ MUSTBENCH</div>
+      <div class="nav-links">
+        <a href="#overview">Overview</a>
+        <a href="#tasks">Tasks</a>
+        <a href="#demo">Demo</a>
+        <a href="#results">Results</a>
+        <a href="#method">Method</a>
+        <a href="#citation">Citation</a>
+      </div>
+    </div>
+  </nav>
+
+  <header class="hero" id="overview">
+    <h1>Can Music LLMs know <em>when</em> musical events happen?</h1>
+    <p>
+      MUSTBENCH evaluates whether Large Audio-Language Models can ground musical events,
+      transitions, and affective changes to concrete timestamps or intervals in full-length music.
+    </p>
 
     <div class="buttons">
-      <a href="#">Paper</a>
+      <a href="assets/paper/mustbench.pdf">Paper</a>
       <a href="#">Code</a>
       <a href="#">Dataset</a>
       <a href="#demo">Demo</a>
     </div>
+
+    <img class="hero-figure" src="assets/figures/teaser.png" alt="MUSTBENCH teaser figure" />
   </header>
 
-  <section>
-    <h2>Overview</h2>
-    <p>
-      MUSTBENCH evaluates whether Music LLMs can identify not only what happens in music,
-      but also when it happens. The benchmark includes five temporally grounded music QA tasks.
-    </p>
-  </section>
+  <main>
+    <section id="tasks">
+      <h2>Five Temporally Grounded Music QA Tasks</h2>
+      <div id="taskCards" class="card-grid"></div>
+    </section>
 
-  <section>
-    <h2>Tasks</h2>
+    <section id="demo">
+      <h2>Interactive Demo</h2>
 
-    <div class="card">
-      <h3>Temporal Source Grounding (TSG)</h3>
-      <p>Find when a specific instrument or vocal first appears or finally disappears.</p>
-    </div>
+      <div class="demo-layout">
+        <div class="panel">
+          <label for="demoSelect">Select example</label>
+          <select id="demoSelect"></select>
 
-    <div class="card">
-      <h3>Local Transition Recognition (LTR)</h3>
-      <p>Select the musical change that occurs at a given timestamp.</p>
-    </div>
+          <h3 id="demoQuestion"></h3>
+          <p><strong>Ground truth:</strong> <span id="demoGroundTruth"></span></p>
 
-    <div class="card">
-      <h3>Transition-Aware Description (TAD)</h3>
-      <p>Describe the musical transition occurring around a timestamp.</p>
-    </div>
+          <table>
+            <thead>
+              <tr>
+                <th>Model</th>
+                <th>Prediction</th>
+                <th>Score</th>
+              </tr>
+            </thead>
+            <tbody id="predictionTable"></tbody>
+          </table>
+        </div>
 
-    <div class="card">
-      <h3>Global Temporal Ordering (GTO)</h3>
-      <p>Determine the chronological order of multiple musical transitions.</p>
-    </div>
+        <div class="panel">
+          <audio id="audioPlayer" controls></audio>
+          <div id="timeline" class="timeline"></div>
+        </div>
+      </div>
+    </section>
 
-    <div class="card">
-      <h3>Mood Trajectory Reasoning (MTR)</h3>
-      <p>Locate the highest or lowest emotional intensity intervals in a track.</p>
-    </div>
-  </section>
+    <section id="results">
+      <h2>Leaderboard</h2>
+      <div id="leaderboard"></div>
+    </section>
 
-  <section id="demo">
-    <h2>Demo</h2>
-    <p>
-      Interactive audio timeline demos will be added here.
-    </p>
-  </section>
+    <section id="method">
+      <h2>MUST Training Pipeline</h2>
+      <img class="wide-figure" src="assets/figures/method.png" alt="MUST method figure" />
 
-  <section>
-    <h2>Citation</h2>
-    <pre>
-@article{kwon2026mustbench,
+      <div class="method-grid">
+        <div class="card">
+          <h3>1. Transition-Aware Encoder Pretraining</h3>
+          <p>Adapts the music encoder to capture transition probability and mood-change signals.</p>
+        </div>
+        <div class="card">
+          <h3>2. Timestamped Caption Pretraining</h3>
+          <p>Aligns acoustic tokens with timestamped music captions.</p>
+        </div>
+        <div class="card">
+          <h3>3. Temporal QA Fine-Tuning</h3>
+          <p>Trains the model on five temporally grounded QA tasks.</p>
+        </div>
+        <div class="card">
+          <h3>4. GRPO Training</h3>
+          <p>Optimizes timestamp and interval predictions with task-level rewards.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="citation">
+      <h2>Citation</h2>
+      <pre><code>@article{kwon2026mustbench,
   title={MUSTBENCH: Benchmarking and Advancing Temporal Grounding in Music LLMs},
   author={Kwon, Daeyong and others},
   year={2026}
-}
-    </pre>
-  </section>
+}</code></pre>
+    </section>
+  </main>
 
-  <footer>
-    MUSTBENCH Project Website
-  </footer>
-
+  <script src="assets/js/main.js"></script>
 </body>
 </html>
