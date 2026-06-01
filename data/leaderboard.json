@@ -1,6 +1,6 @@
 [
   {
-    "model": "MUST 7B",
+    "model": "MusT",
     "type": "Ours",
     "size": "7B",
     "tsg_onset": 55.5,
@@ -68,7 +68,7 @@
     "overall": 38.1
   },
   {
-    "model": "MUST 3B",
+    "model": "MusT",
     "type": "Ours",
     "size": "3B",
     "tsg_onset": 35.5,
@@ -102,7 +102,7 @@
     "overall": 36.6
   },
   {
-    "model": "MusicFlamingo 8B",
+    "model": "MusicFlamingo",
     "type": "Open",
     "size": "8B",
     "tsg_onset": 53.0,
@@ -119,7 +119,7 @@
     "overall": 31.1
   },
   {
-    "model": "Qwen3 Omni 30B-A3B",
+    "model": "Qwen3 Omni",
     "type": "Open",
     "size": "30B-A3B",
     "tsg_onset": 62.5,
@@ -136,7 +136,7 @@
     "overall": 30.2
   },
   {
-    "model": "Qwen2.5-Omni 7B",
+    "model": "Qwen2.5 Omni",
     "type": "Open",
     "size": "7B",
     "tsg_onset": 39.0,
@@ -187,7 +187,7 @@
     "overall": 22.6
   },
   {
-    "model": "AF-Next 8B",
+    "model": "AudioFlamingo-Next",
     "type": "Open",
     "size": "8B",
     "tsg_onset": 17.0,
@@ -204,7 +204,7 @@
     "overall": 18.8
   },
   {
-    "model": "Qwen2.5-Omni 3B",
+    "model": "Qwen2.5 Omni",
     "type": "Open",
     "size": "3B",
     "tsg_onset": 7.5,
@@ -221,7 +221,7 @@
     "overall": 18.2
   },
   {
-    "model": "Phi-4-mm 6B",
+    "model": "Phi-4-mm",
     "type": "Open",
     "size": "6B",
     "tsg_onset": 14.6,
