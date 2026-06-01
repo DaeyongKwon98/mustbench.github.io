@@ -3,7 +3,7 @@
     "id": "tsg-vocal-onset",
     "title": "TSG · Vocal onset localization",
     "task": "TSG",
-    "duration": 180,
+    "duration": 176,
     "audio": "assets/audios/TSG_example.mp3",
     "question": "When does the vocal first start to play?",
     "ground_truth_text": "2:00",
