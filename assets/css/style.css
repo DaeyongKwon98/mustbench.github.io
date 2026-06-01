@@ -262,19 +262,28 @@ pre {
 }
 
 #leaderboard tbody tr.type-ours {
-  background: rgba(22, 163, 74, 0.12);
+  background: rgba(34, 197, 94, 0.18);
+  border-left: 6px solid #16a34a;
 }
 
 #leaderboard tbody tr.type-open {
-  background: rgba(37, 99, 235, 0.08);
+  background: rgba(59, 130, 246, 0.16);
+  border-left: 6px solid #2563eb;
 }
 
 #leaderboard tbody tr.type-closed {
-  background: rgba(124, 58, 237, 0.08);
+  background: rgba(245, 158, 11, 0.18);
+  border-left: 6px solid #d97706;
 }
 
-#leaderboard tbody tr.type-ours:hover,
-#leaderboard tbody tr.type-open:hover,
+#leaderboard tbody tr.type-ours:hover {
+  background: rgba(34, 197, 94, 0.24);
+}
+
+#leaderboard tbody tr.type-open:hover {
+  background: rgba(59, 130, 246, 0.22);
+}
+
 #leaderboard tbody tr.type-closed:hover {
-  filter: brightness(0.98);
+  background: rgba(245, 158, 11, 0.24);
 }
