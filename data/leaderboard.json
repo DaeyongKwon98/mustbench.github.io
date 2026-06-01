@@ -1,0 +1,42 @@
+[
+  {
+    "model": "MUST 7B",
+    "type": "Ours",
+    "tsg": 59.0,
+    "ltr": 60.6,
+    "tad": 27.8,
+    "gto": 67.2,
+    "mtr": 25.9,
+    "overall": 44.1
+  },
+  {
+    "model": "Gemini 2.5 Flash",
+    "type": "Closed",
+    "tsg": 65.8,
+    "ltr": 56.7,
+    "tad": 22.9,
+    "gto": 42.4,
+    "mtr": 29.0,
+    "overall": 41.8
+  },
+  {
+    "model": "MusicFlamingo 8B",
+    "type": "Open",
+    "tsg": 38.5,
+    "ltr": 56.3,
+    "tad": 23.4,
+    "gto": 41.4,
+    "mtr": 13.6,
+    "overall": 31.1
+  },
+  {
+    "model": "Qwen2.5-Omni 7B",
+    "type": "Open",
+    "tsg": 21.3,
+    "ltr": 45.7,
+    "tad": 21.5,
+    "gto": 46.5,
+    "mtr": 8.5,
+    "overall": 24.3
+  }
+]
