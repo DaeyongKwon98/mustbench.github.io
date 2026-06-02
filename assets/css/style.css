@@ -198,9 +198,10 @@ audio {
 
 .marker {
   position: absolute;
-  top: 28px;
   width: 3px;
-  height: 115px;
+  top: 28px;
+  bottom: 0;
+  height: auto;
   border-radius: 999px;
 }
 
