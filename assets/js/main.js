@@ -169,12 +169,14 @@ function setupTimelinePlayer(card, example) {
 
   function setPlayButtonState(isPlaying) {
     const icon = playButton.querySelector(".timeline-play-icon");
-
+  
     if (isPlaying) {
-      icon.textContent = "■";
+      icon.textContent = "";
+      icon.classList.add("is-stop");
       playButton.setAttribute("aria-label", "Pause audio");
     } else {
       icon.textContent = "▶";
+      icon.classList.remove("is-stop");
       playButton.setAttribute("aria-label", "Play audio");
     }
   }
