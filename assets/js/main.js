@@ -267,7 +267,18 @@ function renderDemoCard(example, index) {
     <div class="demo-layout">
       <div class="panel">
         <p class="question-label">Question</p>
-        <h3 class="demo-question">${escapeHtml(example.question)}</h3>
+        
+        <div class="demo-question-block">
+          <h3 class="demo-question-title">${escapeHtml(mainQuestion)}</h3>
+        
+          ${
+            optionLines.length > 0
+              ? `<div class="demo-options">
+                  ${optionLines.map((line) => `<p>${escapeHtml(line)}</p>`).join("")}
+                </div>`
+              : ""
+          }
+        </div>
 
         <div class="ground-truth-box">
           <strong>Ground truth</strong>
