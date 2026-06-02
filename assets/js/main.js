@@ -94,7 +94,6 @@ function renderPredictionRows(table, predictions) {
             : ""
         }
       </td>
-      <td>${escapeHtml(prediction.score ?? "-")}</td>
     `;
 
     table.appendChild(row);
@@ -185,7 +184,6 @@ function renderDemoCard(example, index) {
             <tr>
               <th>Model</th>
               <th>Prediction</th>
-              <th>Score / Error</th>
             </tr>
           </thead>
           <tbody></tbody>
