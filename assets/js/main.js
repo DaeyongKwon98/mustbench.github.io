@@ -4,7 +4,12 @@ const COLORS = {
   open: "#2563eb",
   closed: "#d97706",
   base: "#dc2626",
-  other: "#6b7280"
+  other: "#6b7280",
+
+  // GTO transition markers
+  x: "#16a34a", // green
+  y: "#d97706", // orange
+  z: "#2563eb"  // blue
 };
 
 async function loadJson(path) {
@@ -98,10 +103,12 @@ function renderTimeline(timeline, example) {
   timeline.innerHTML = "";
 
   example.ground_truth.forEach((gt) => {
+    const gtColor = COLORS[gt.kind] || gt.color || COLORS.gt;
+  
     if (gt.type === "point") {
-      addPointMarker(timeline, gt, example.duration, COLORS.gt, 24);
+      addPointMarker(timeline, gt, example.duration, gtColor, 24);
     } else if (gt.type === "interval") {
-      addIntervalMarker(timeline, gt, example.duration, COLORS.gt, 44);
+      addIntervalMarker(timeline, gt, example.duration, gtColor, 44);
     }
   });
 
