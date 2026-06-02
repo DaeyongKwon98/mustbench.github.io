@@ -1,7 +1,7 @@
 [
   {
     "id": "tsg-vocal-onset",
-    "title": "TSG",
+    "title": "Temporal Source Grounding",
     "task": "TSG",
     "duration": 176,
     "audio": "assets/audios/TSG_example.mp3",
@@ -52,7 +52,7 @@
   },
   {
   "id": "tad-1290949",
-  "title": "TAD",
+  "title": "Transition-Aware Descrption",
   "task": "TAD",
   "audio_id": "1290949",
   "duration": 134,
