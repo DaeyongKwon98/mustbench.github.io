@@ -281,15 +281,21 @@ function renderDemoCard(example, index) {
 
   const optionHtml = optionLines
     .map((line) => {
+      const isSectionTitle = /^(Descriptions|Options):$/i.test(line);
+  
       const optionMatch = line.match(/^([A-Z])\s*[:.)]/);
       const isCorrectOption =
         useOptionAnswerHighlight &&
         correctOptionLetter &&
         optionMatch &&
         optionMatch[1].toUpperCase() === correctOptionLetter;
-
+  
       return `
-        <p class="demo-option ${isCorrectOption ? "correct-option" : ""}">
+        <p class="
+          demo-option
+          ${isSectionTitle ? "demo-question-section-title" : ""}
+          ${isCorrectOption ? "correct-option" : ""}
+        ">
           ${escapeHtml(line)}
         </p>
       `;
