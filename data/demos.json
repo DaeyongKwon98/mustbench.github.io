@@ -153,7 +153,23 @@
     "audio": "assets/audios/GTO_example.mp3",
     "question": "Which of the following options represents the correct chronological order of these transitions as they appear in the track?\n\nDescriptions:\n(X) The drums lift slightly while the bass remains present, and the synth voice features an automation raising its pitch, preserving the quiet volume and bright E-minor atmosphere while the emotional arousal and rhythmic drive stay constant.\n(Y) A slight easing of emotional arousal is paired with the drums softening noticeably, the bass swelling prominently, and the synth lead rising subtly. While the track’s bright, dynamic character remains, a deliberate wavering effect in the beat makes the tempo difficult to read, lacking a stable pulse.\n(Z) A dramatic surge in emotional arousal coincides with the drums rising noticeably, the faint bass emerging, and the rhythmic texture becoming markedly more driving, all while the bright, dynamic E-minor soundscape at 140 BPM retains its quiet overall loudness and the synthesizer melodic line continues its shimmering presence.\n\nOptions:\nA. X → Y → Z\nB. X → Z → Y\nC. Y → X → Z\nD. Y → Z → X\nE. Z → X → Y\nF. Z → Y → X\n\nAnswer with the letter of the correct option.",
     "ground_truth_text": "F",
-    "ground_truth": [],
+    "ground_truth": [
+      {
+        "type": "point",
+        "time": 166,
+        "label": "X 2:46"
+      },
+      {
+        "type": "point",
+        "time": 148,
+        "label": "Y 2:28"
+      },
+      {
+        "type": "point",
+        "time": 80,
+        "label": "Z 1:20"
+      }
+    ],
     "predictions": [
       {
         "model": "MusT",
