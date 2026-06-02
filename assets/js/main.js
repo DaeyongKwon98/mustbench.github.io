@@ -145,6 +145,24 @@ function renderTimeline(timeline, example) {
   timeline.appendChild(playhead);
 }
 
+function getCorrectOptionLetter(example) {
+  const task = String(example.task || "").toUpperCase();
+
+  if (task !== "LTR" && task !== "GTO") {
+    return null;
+  }
+
+  const raw = String(
+    example.correct_answer ||
+    example.answer ||
+    example.ground_truth_text ||
+    ""
+  ).trim();
+
+  const match = raw.match(/^([A-Z])(?=\b|[:.)])/i);
+  return match ? match[1].toUpperCase() : null;
+}
+
 
 function formatTime(seconds) {
   if (!Number.isFinite(seconds)) {
