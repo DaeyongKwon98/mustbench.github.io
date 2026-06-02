@@ -243,6 +243,14 @@ function renderDemoCard(example, index) {
   const card = document.createElement("article");
   card.className = "demo-card";
 
+  const questionLines = String(example.question ?? "")
+    .split("\n")
+    .map((line) => line.trim())
+    .filter(Boolean);
+
+  const mainQuestion = questionLines[0] ?? "";
+  const optionLines = questionLines.slice(1);
+  
   card.innerHTML = `
     <div class="demo-card-header">
       <div>
