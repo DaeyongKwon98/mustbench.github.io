@@ -508,3 +508,7 @@ pre {
 .marker-label {
   z-index: 20;
 }
+
+.demo-question {
+  white-space: pre-line;
+}
