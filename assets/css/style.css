@@ -512,3 +512,24 @@ pre {
 .demo-question {
   white-space: pre-line;
 }
+
+.demo-question-block {
+  margin-bottom: 16px;
+}
+
+.demo-question-title {
+  margin: 0 0 10px;
+  font-size: 20px;
+  line-height: 1.35;
+  letter-spacing: -0.02em;
+}
+
+.demo-options {
+  color: #374151;
+  font-size: 14px;
+  line-height: 1.55;
+}
+
+.demo-options p {
+  margin: 5px 0;
+}
