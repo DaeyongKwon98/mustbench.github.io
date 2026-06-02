@@ -1,8 +1,10 @@
 const COLORS = {
   gt: "#111827",
   ours: "#16a34a",
+  open: "#2563eb",
+  closed: "#d97706",
   base: "#dc2626",
-  other: "#2563eb"
+  other: "#6b7280"
 };
 
 async function loadJson(path) {
