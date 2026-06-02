@@ -146,6 +146,84 @@ function renderTimeline(timeline, example) {
   timeline.appendChild(playhead);
 }
 
+
+function formatTime(seconds) {
+  if (!Number.isFinite(seconds)) {
+    return "0:00";
+  }
+
+  const m = Math.floor(seconds / 60);
+  const s = Math.floor(seconds % 60);
+  return `${m}:${String(s).padStart(2, "0")}`;
+}
+
+function setupTimelinePlayer(card, example) {
+  const audio = card.querySelector("audio");
+  const timeline = card.querySelector(".timeline");
+  const playButton = card.querySelector(".timeline-play-button");
+  const currentTimeEl = card.querySelector(".timeline-current-time");
+  const durationTimeEl = card.querySelector(".timeline-duration-time");
+  const playhead = card.querySelector(".timeline-playhead");
+
+  const timelineDuration = Number(example.duration) || audio.duration || 1;
+
+  function updatePlayhead() {
+    const progress = Math.max(
+      0,
+      Math.min(100, (audio.currentTime / timelineDuration) * 100)
+    );
+
+    playhead.style.left = `${progress}%`;
+    currentTimeEl.textContent = formatTime(audio.currentTime);
+
+    if (!audio.paused && !audio.ended) {
+      requestAnimationFrame(updatePlayhead);
+    }
+  }
+
+  audio.addEventListener("loadedmetadata", () => {
+    const duration = Number(example.duration) || audio.duration;
+    durationTimeEl.textContent = formatTime(duration);
+  });
+
+  audio.addEventListener("play", () => {
+    playButton.textContent = "Pause";
+    requestAnimationFrame(updatePlayhead);
+  });
+
+  audio.addEventListener("pause", () => {
+    playButton.textContent = "Play";
+  });
+
+  audio.addEventListener("ended", () => {
+    playButton.textContent = "Play";
+    updatePlayhead();
+  });
+
+  playButton.addEventListener("click", () => {
+    if (audio.paused) {
+      audio.play();
+    } else {
+      audio.pause();
+    }
+  });
+
+  timeline.addEventListener("click", (event) => {
+    const rect = timeline.getBoundingClientRect();
+    const ratio = Math.max(
+      0,
+      Math.min(1, (event.clientX - rect.left) / rect.width)
+    );
+
+    audio.currentTime = ratio * timelineDuration;
+    updatePlayhead();
+  });
+
+  durationTimeEl.textContent = formatTime(timelineDuration);
+  updatePlayhead();
+}
+
+
 function renderDemoCard(example, index) {
   const card = document.createElement("article");
   card.className = "demo-card";
