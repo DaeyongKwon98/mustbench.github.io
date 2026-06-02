@@ -68,36 +68,55 @@ function addIntervalMarker(timeline, item, duration, color, top) {
   timeline.appendChild(interval);
 }
 
-function renderDemo(example) {
-  document.getElementById("demoQuestion").textContent = example.question;
-  document.getElementById("demoGroundTruth").textContent = example.ground_truth_text;
-  document.getElementById("audioPlayer").src = example.audio;
+function escapeHtml(value) {
+  return String(value ?? "")
+    .replaceAll("&", "&amp;")
+    .replaceAll("<", "&lt;")
+    .replaceAll(">", "&gt;")
+    .replaceAll('"', "&quot;")
+    .replaceAll("'", "&#039;");
+}
 
-  const table = document.getElementById("predictionTable");
+function renderPredictionRows(table, predictions) {
   table.innerHTML = "";
 
-  example.predictions.forEach((prediction) => {
+  predictions.forEach((prediction) => {
     const row = document.createElement("tr");
+    row.className = `prediction-row ${prediction.kind || ""}`;
+
     row.innerHTML = `
-      <td><strong>${prediction.model}</strong></td>
-      <td>${prediction.text}</td>
-      <td>${prediction.score}</td>
+      <td><strong>${escapeHtml(prediction.model)}</strong></td>
+      <td>
+        <div>${escapeHtml(prediction.text)}</div>
+        ${
+          prediction.observation
+            ? `<div class="prediction-observation">${escapeHtml(prediction.observation)}</div>`
+            : ""
+        }
+      </td>
+      <td>${escapeHtml(prediction.score ?? "-")}</td>
     `;
+
     table.appendChild(row);
   });
+}
 
-  const timeline = document.getElementById("timeline");
+function renderTimeline(timeline, example) {
   timeline.innerHTML = "";
 
   example.ground_truth.forEach((gt) => {
     if (gt.type === "point") {
       addPointMarker(timeline, gt, example.duration, COLORS.gt, 24);
-    } else {
+    } else if (gt.type === "interval") {
       addIntervalMarker(timeline, gt, example.duration, COLORS.gt, 44);
     }
   });
 
   example.predictions.forEach((prediction, index) => {
+    if (prediction.type === "text") {
+      return;
+    }
+
     const color = COLORS[prediction.kind] || COLORS.other;
     const label = `${prediction.model}: ${prediction.text}`;
 
@@ -112,7 +131,7 @@ function renderDemo(example) {
         color,
         52 + index * 30
       );
-    } else {
+    } else if (prediction.type === "interval") {
       addIntervalMarker(
         timeline,
         {
@@ -128,22 +147,74 @@ function renderDemo(example) {
   });
 }
 
-function setupDemo(demos) {
-  const select = document.getElementById("demoSelect");
-  select.innerHTML = "";
+function renderDemoCard(example, index) {
+  const card = document.createElement("article");
+  card.className = "demo-card";
 
-  demos.forEach((demo, index) => {
-    const option = document.createElement("option");
-    option.value = index;
-    option.textContent = demo.title;
-    select.appendChild(option);
+  card.innerHTML = `
+    <div class="demo-card-header">
+      <div>
+        <div class="demo-task">${escapeHtml(example.task || "Example")}</div>
+        <h3>${escapeHtml(example.title || `Example ${index + 1}`)}</h3>
+      </div>
+      ${
+        example.audio_id
+          ? `<div class="audio-id">Audio ID: ${escapeHtml(example.audio_id)}</div>`
+          : ""
+      }
+    </div>
+
+    <div class="demo-layout">
+      <div class="panel">
+        <p class="question-label">Question</p>
+        <h3 class="demo-question">${escapeHtml(example.question)}</h3>
+
+        <div class="ground-truth-box">
+          <strong>Ground truth</strong>
+          <p>${escapeHtml(example.ground_truth_text)}</p>
+        </div>
+
+        ${
+          example.observation
+            ? `<div class="example-observation">${escapeHtml(example.observation)}</div>`
+            : ""
+        }
+
+        <table class="prediction-table">
+          <thead>
+            <tr>
+              <th>Model</th>
+              <th>Prediction</th>
+              <th>Score / Error</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+
+      <div class="panel">
+        <audio controls preload="metadata" src="${escapeHtml(example.audio)}"></audio>
+        <div class="timeline"></div>
+      </div>
+    </div>
+  `;
+
+  const predictionTable = card.querySelector(".prediction-table tbody");
+  const timeline = card.querySelector(".timeline");
+
+  renderPredictionRows(predictionTable, example.predictions || []);
+  renderTimeline(timeline, example);
+
+  return card;
+}
+
+function renderAllDemos(demos) {
+  const container = document.getElementById("demoExamples");
+  container.innerHTML = "";
+
+  demos.forEach((example, index) => {
+    container.appendChild(renderDemoCard(example, index));
   });
-
-  select.addEventListener("change", () => {
-    renderDemo(demos[Number(select.value)]);
-  });
-
-  renderDemo(demos[0]);
 }
 
 function getModelTypeClass(type) {
