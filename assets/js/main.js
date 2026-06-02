@@ -88,11 +88,6 @@ function renderPredictionRows(table, predictions) {
       <td><strong>${escapeHtml(prediction.model)}</strong></td>
       <td>
         <div>${escapeHtml(prediction.text)}</div>
-        ${
-          prediction.observation
-            ? `<div class="prediction-observation">${escapeHtml(prediction.observation)}</div>`
-            : ""
-        }
       </td>
     `;
 
