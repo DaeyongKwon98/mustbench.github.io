@@ -251,12 +251,6 @@ function renderDemoCard(example, index) {
           <p>${escapeHtml(example.ground_truth_text)}</p>
         </div>
 
-        ${
-          example.observation
-            ? `<div class="example-observation">${escapeHtml(example.observation)}</div>`
-            : ""
-        }
-
         <table class="prediction-table">
           <thead>
             <tr>
