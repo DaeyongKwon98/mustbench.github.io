@@ -29,7 +29,7 @@ function renderTasks(tasks) {
     card.innerHTML = `
       <h3>${task.abbr}: ${task.name}</h3>
       <p>${task.description}</p>
-      <p><strong>Metric:</strong> ${task.metric}</p>
+      // <p><strong>Metric:</strong> ${task.metric}</p>
     `;
     container.appendChild(card);
   });
