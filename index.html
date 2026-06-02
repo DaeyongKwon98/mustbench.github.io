@@ -57,33 +57,13 @@
     </section>
 
     <section id="demo">
-      <h2>Interactive Demo</h2>
-
-      <div class="demo-layout">
-        <div class="panel">
-          <label for="demoSelect">Select example</label>
-          <select id="demoSelect"></select>
-
-          <h3 id="demoQuestion"></h3>
-          <p><strong>Ground truth:</strong> <span id="demoGroundTruth"></span></p>
-
-          <table>
-            <thead>
-              <tr>
-                <th>Model</th>
-                <th>Prediction</th>
-                <th>Score</th>
-              </tr>
-            </thead>
-            <tbody id="predictionTable"></tbody>
-          </table>
-        </div>
-
-        <div class="panel">
-          <audio id="audioPlayer" controls></audio>
-          <div id="timeline" class="timeline"></div>
-        </div>
-      </div>
+      <h2>Interactive Examples</h2>
+      <p class="section-description">
+        Explore representative examples from MusTBENCH. Each example shows the audio,
+        ground truth, and model predictions together.
+      </p>
+    
+      <div id="demoExamples" class="demo-stack"></div>
     </section>
 
     <section id="results">
