@@ -269,8 +269,17 @@ function renderDemoCard(example, index) {
       </div>
 
       <div class="panel">
-        <audio controls preload="metadata" src="${escapeHtml(example.audio)}"></audio>
-        <div class="timeline"></div>
+        <div class="timeline-player">
+          <audio preload="metadata" src="${escapeHtml(example.audio)}"></audio>
+      
+          <div class="timeline-controls">
+            <button class="timeline-play-button" type="button">Play</button>
+            <span class="timeline-current-time">0:00</span>
+            <span class="timeline-duration-time">0:00</span>
+          </div>
+      
+          <div class="timeline"></div>
+        </div>
       </div>
     </div>
   `;
@@ -280,6 +289,7 @@ function renderDemoCard(example, index) {
 
   renderPredictionRows(predictionTable, example.predictions || []);
   renderTimeline(timeline, example);
+  setupTimelinePlayer(card, example);
 
   return card;
 }
