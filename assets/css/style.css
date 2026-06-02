@@ -547,3 +547,15 @@ pre {
 .demo-options p {
   margin: 5px 0;
 }
+
+.demo-question-section-title {
+  margin-top: 14px;
+  margin-bottom: 6px;
+  padding: 0;
+  font-weight: 800;
+  color: #111827;
+  font-size: 14px;
+  text-transform: none;
+  background: transparent;
+  border-left: 0;
+}
