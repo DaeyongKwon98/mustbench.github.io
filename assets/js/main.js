@@ -260,6 +260,10 @@ function renderDemoCard(example, index) {
   const card = document.createElement("article");
   card.className = "demo-card";
 
+  const task = String(example.task || "").toUpperCase();
+  const useOptionAnswerHighlight = task === "LTR" || task === "GTO";
+  const correctOptionLetter = getCorrectOptionLetter(example);
+
   const questionLines = String(example.question ?? "")
     .split("\n")
     .map((line) => line.trim())
@@ -267,7 +271,27 @@ function renderDemoCard(example, index) {
 
   const mainQuestion = questionLines[0] ?? "";
   const optionLines = questionLines.slice(1);
-  
+
+  const optionHtml = optionLines
+    .map((line) => {
+      const optionMatch = line.match(/^([A-Z])\s*[:.)]/);
+      const isCorrectOption =
+        useOptionAnswerHighlight &&
+        correctOptionLetter &&
+        optionMatch &&
+        optionMatch[1].toUpperCase() === correctOptionLetter;
+
+      return `
+        <p class="demo-option ${isCorrectOption ? "correct-option" : ""}">
+          ${escapeHtml(line)}
+        </p>
+      `;
+    })
+    .join("");
+
+  const showGroundTruthBox =
+    !useOptionAnswerHighlight && example.ground_truth_text;
+
   card.innerHTML = `
     <div class="demo-card-header">
       <div>
@@ -284,23 +308,27 @@ function renderDemoCard(example, index) {
     <div class="demo-layout">
       <div class="panel">
         <p class="question-label">Question</p>
-        
+
         <div class="demo-question-block">
           <h3 class="demo-question-title">${escapeHtml(mainQuestion)}</h3>
-        
+
           ${
             optionLines.length > 0
               ? `<div class="demo-options">
-                  ${optionLines.map((line) => `<p>${escapeHtml(line)}</p>`).join("")}
+                  ${optionHtml}
                 </div>`
               : ""
           }
         </div>
 
-        <div class="ground-truth-box">
-          <strong>Ground truth</strong>
-          <p>${escapeHtml(example.ground_truth_text)}</p>
-        </div>
+        ${
+          showGroundTruthBox
+            ? `<div class="ground-truth-box">
+                <strong>Ground truth</strong>
+                <p>${escapeHtml(example.ground_truth_text)}</p>
+              </div>`
+            : ""
+        }
 
         <table class="prediction-table">
           <thead>
@@ -316,22 +344,23 @@ function renderDemoCard(example, index) {
       <div class="panel">
         <div class="timeline-player">
           <audio preload="metadata" src="${escapeHtml(example.audio)}"></audio>
-      
+
           <div class="timeline-controls">
             <button class="timeline-play-button" type="button" aria-label="Play audio">
               <span class="timeline-play-icon">▶</span>
             </button>
-      
+
             <div class="timeline-time-pill">
               <span class="timeline-current-time">0:00</span>
               <span class="timeline-time-separator">/</span>
               <span class="timeline-duration-time">0:00</span>
             </div>
           </div>
-      
+
           <div class="timeline"></div>
         </div>
       </div>
+    </div>
   `;
 
   const predictionTable = card.querySelector(".prediction-table tbody");
