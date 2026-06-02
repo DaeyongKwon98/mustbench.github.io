@@ -139,6 +139,11 @@ function renderTimeline(timeline, example) {
       );
     }
   });
+
+  // progress line
+  const playhead = document.createElement("div");
+  playhead.className = "timeline-playhead";
+  timeline.appendChild(playhead);
 }
 
 function renderDemoCard(example, index) {
