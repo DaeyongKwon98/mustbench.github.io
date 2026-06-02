@@ -440,9 +440,22 @@ pre {
 }
 
 .timeline-play-icon {
-  font-size: 14px;
-  font-weight: 800;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 18px;
+  height: 18px;
+  font-size: 15px;
   line-height: 1;
+}
+
+.timeline-play-icon.is-stop::before {
+  content: "";
+  display: block;
+  width: 12px;
+  height: 12px;
+  border-radius: 2px;
+  background: #ffffff;
 }
 
 .timeline-time-pill {
