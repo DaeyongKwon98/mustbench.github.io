@@ -100,5 +100,48 @@
     "more subdued rhythmic presence"
   ],
   "observation": "MusT captures both the harmonic shift toward G major and the reduced drum/rhythmic intensity, while the selected baselines predict the opposite direction of change."
-}
+},
+    {
+    "id": "ltr-938295",
+    "title": "Local Transition Recognition",
+    "task": "LTR",
+    "audio_id": "938295",
+    "duration": 180,
+    "audio": "assets/audios/LTR_example.mp3",
+    "question": "What best describes the musical change at 1:07?\n\nA: A bright plucked guitar-like instrument surges forward, making its sharp staccato riff prominent over the rhythm section.\nB: The voice becomes a forceful rhythmic rap as the folk-like background instrument grows more prominent behind it.\nC: The male voice shifts from low spoken-word delivery to forceful rhythmic rap as the folk-like background instrument fades out.\nD: The piercing synth lead fades as warm electric piano rises and the vocalist adopts low spoken-word delivery.",
+    "ground_truth_text": "C",
+    "ground_truth": [
+      {
+        "type": "point",
+        "time": 67,
+        "label": "Transition 1:07"
+      }
+    ],
+    "predictions": [
+      {
+        "model": "MusT",
+        "text": "C",
+        "type": "text",
+        "kind": "ours"
+      },
+      {
+        "model": "Gemini 2.5 Flash",
+        "text": "A",
+        "type": "text",
+        "kind": "closed"
+      },
+      {
+        "model": "GPT Audio",
+        "text": "D",
+        "type": "text",
+        "kind": "closed"
+      },
+      {
+        "model": "Music Flamingo",
+        "text": "A",
+        "type": "text",
+        "kind": "open"
+      }
+    ]
+  }
 ]
