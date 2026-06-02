@@ -407,3 +407,70 @@ pre {
     margin-top: 8px;
   }
 }
+
+
+.timeline-player audio {
+  display: none;
+}
+
+.timeline-controls {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 14px;
+  font-size: 0.9rem;
+}
+
+.timeline-play-button {
+  border: 0;
+  border-radius: 999px;
+  padding: 8px 14px;
+  font-weight: 700;
+  cursor: pointer;
+  background: #111827;
+  color: white;
+}
+
+.timeline-current-time,
+.timeline-duration-time {
+  font-variant-numeric: tabular-nums;
+  color: #374151;
+}
+
+.timeline {
+  position: relative;
+  cursor: pointer;
+}
+
+.timeline-playhead {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  left: 0%;
+  background: #111827;
+  z-index: 30;
+  pointer-events: none;
+  transform: translateX(-1px);
+}
+
+.timeline-playhead::before {
+  content: "";
+  position: absolute;
+  top: -6px;
+  left: 50%;
+  width: 10px;
+  height: 10px;
+  border-radius: 999px;
+  background: #111827;
+  transform: translateX(-50%);
+}
+
+.marker,
+.interval {
+  z-index: 10;
+}
+
+.marker-label {
+  z-index: 20;
+}
