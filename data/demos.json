@@ -69,7 +69,7 @@
   "predictions": [
     {
       "model": "MusT",
-      "text": "The harmony shifts from C major to G major as the drums ease back, softening their attack while the bass disappears from the mix.",
+      "text": "The harmony shifts to G major as the drums ease back, softening their attack while the bass disappears from the mix.",
       "type": "text",
       "score": "Strong",
       "kind": "ours",
