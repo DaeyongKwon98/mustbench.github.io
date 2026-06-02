@@ -305,7 +305,7 @@ async function main() {
     ]);
 
     renderTasks(tasks);
-    setupDemo(demos);
+    renderAllDemos(demos);
     renderLeaderboard(leaderboard);
   } catch (error) {
     console.error(error);
