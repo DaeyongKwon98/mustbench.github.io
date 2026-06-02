@@ -167,6 +167,18 @@ function setupTimelinePlayer(card, example) {
 
   const timelineDuration = Number(example.duration) || audio.duration || 1;
 
+  function setPlayButtonState(isPlaying) {
+    const icon = playButton.querySelector(".timeline-play-icon");
+
+    if (isPlaying) {
+      icon.textContent = "■";
+      playButton.setAttribute("aria-label", "Pause audio");
+    } else {
+      icon.textContent = "▶";
+      playButton.setAttribute("aria-label", "Play audio");
+    }
+  }
+
   function updatePlayhead() {
     const progress = Math.max(
       0,
@@ -187,16 +199,16 @@ function setupTimelinePlayer(card, example) {
   });
 
   audio.addEventListener("play", () => {
-    playButton.textContent = "Pause";
+    setPlayButtonState(true);
     requestAnimationFrame(updatePlayhead);
   });
 
   audio.addEventListener("pause", () => {
-    playButton.textContent = "Play";
+    setPlayButtonState(false);
   });
 
   audio.addEventListener("ended", () => {
-    playButton.textContent = "Play";
+    setPlayButtonState(false);
     updatePlayhead();
   });
 
@@ -220,6 +232,7 @@ function setupTimelinePlayer(card, example) {
   });
 
   durationTimeEl.textContent = formatTime(timelineDuration);
+  setPlayButtonState(false);
   updatePlayhead();
 }
 
@@ -267,15 +280,20 @@ function renderDemoCard(example, index) {
           <audio preload="metadata" src="${escapeHtml(example.audio)}"></audio>
       
           <div class="timeline-controls">
-            <button class="timeline-play-button" type="button">Play</button>
-            <span class="timeline-current-time">0:00</span>
-            <span class="timeline-duration-time">0:00</span>
+            <button class="timeline-play-button" type="button" aria-label="Play audio">
+              <span class="timeline-play-icon">▶</span>
+            </button>
+      
+            <div class="timeline-time-pill">
+              <span class="timeline-current-time">0:00</span>
+              <span class="timeline-time-separator">/</span>
+              <span class="timeline-duration-time">0:00</span>
+            </div>
           </div>
       
           <div class="timeline"></div>
         </div>
       </div>
-    </div>
   `;
 
   const predictionTable = card.querySelector(".prediction-table tbody");
