@@ -157,17 +157,20 @@
       {
         "type": "point",
         "time": 166,
-        "label": "X 2:46"
+        "label": "X 2:46",
+        "kind": "x"
       },
       {
         "type": "point",
         "time": 148,
-        "label": "Y 2:28"
+        "label": "Y 2:28",
+        "kind": "y"
       },
       {
         "type": "point",
         "time": 80,
-        "label": "Z 1:20"
+        "label": "Z 1:20",
+        "kind": "z"
       }
     ],
     "predictions": [
