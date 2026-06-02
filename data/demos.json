@@ -3,6 +3,7 @@
     "id": "tsg-vocal-onset",
     "title": "Temporal Source Grounding",
     "task": "TSG",
+    "audio_id": "235049",
     "duration": 176,
     "audio": "assets/audios/TSG_example.mp3",
     "question": "When does the vocal first start to play?",
