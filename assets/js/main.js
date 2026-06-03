@@ -65,13 +65,12 @@ function addIntervalMarker(timeline, item, duration, color, top) {
   interval.style.top = `${top}px`;
   interval.style.background = color;
 
-  const label = document.createElement("div");
-  label.className = "interval-label";
-  label.style.background = color;
+  const label = document.createElement("span");
+  label.className = "interval-label-inline";
   label.textContent = item.label;
 
-  const range = document.createElement("div");
-  range.className = "interval-range";
+  const range = document.createElement("span");
+  range.className = "interval-range-inline";
   range.textContent = item.range || `${formatTime(item.start)}–${formatTime(item.end)}`;
 
   interval.appendChild(label);
@@ -111,11 +110,18 @@ function renderTimeline(timeline, example) {
 
   example.ground_truth.forEach((gt) => {
     const gtColor = COLORS[gt.kind] || gt.color || COLORS.gt;
+    const isMTR = String(example.task || "").toUpperCase() === "MTR";
   
     if (gt.type === "point") {
       addPointMarker(timeline, gt, example.duration, gtColor, 24);
     } else if (gt.type === "interval") {
-      addIntervalMarker(timeline, gt, example.duration, gtColor, 44);
+      addIntervalMarker(
+        timeline,
+        gt,
+        example.duration,
+        gtColor,
+        isMTR ? 34 : 44
+      );
     }
   });
 
@@ -140,6 +146,8 @@ function renderTimeline(timeline, example) {
         52 + index * 30
       );
     } else if (prediction.type === "interval") {
+      const isMTR = String(example.task || "").toUpperCase() === "MTR";
+
       addIntervalMarker(
         timeline,
         {
@@ -150,7 +158,7 @@ function renderTimeline(timeline, example) {
         },
         example.duration,
         color,
-        72 + index * 28
+        isMTR ? 70 + index * 34 : 72 + index * 28
       );
     }
   });
