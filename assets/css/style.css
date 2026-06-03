@@ -217,13 +217,6 @@ audio {
   border-radius: 8px;
 }
 
-.interval {
-  position: absolute;
-  height: 34px;
-  border-radius: 999px;
-  opacity: 0.78;
-}
-
 table {
   width: 100%;
   border-collapse: collapse;
@@ -506,8 +499,7 @@ pre {
   transform: translateX(-50%);
 }
 
-.marker,
-.interval {
+.marker {
   z-index: 10;
 }
 
@@ -563,4 +555,62 @@ pre {
   text-transform: none;
   background: transparent;
   border-left: 0;
+}
+
+.interval {
+  position: absolute;
+  height: 16px;
+  border-radius: 999px;
+  opacity: 0.88;
+  z-index: 10;
+  overflow: visible;
+}
+
+.interval::before,
+.interval::after {
+  content: "";
+  position: absolute;
+  top: -4px;
+  width: 3px;
+  height: 24px;
+  border-radius: 999px;
+  background: inherit;
+}
+
+.interval::before {
+  left: 0;
+}
+
+.interval::after {
+  right: 0;
+}
+
+.interval-label {
+  position: absolute;
+  top: -27px;
+  left: 50%;
+  transform: translateX(-50%);
+  white-space: nowrap;
+  font-size: 12px;
+  font-weight: 800;
+  color: white;
+  padding: 3px 7px;
+  border-radius: 8px;
+  z-index: 20;
+}
+
+.interval-range {
+  position: absolute;
+  top: 18px;
+  left: 50%;
+  transform: translateX(-50%);
+  white-space: nowrap;
+  font-size: 11px;
+  font-weight: 700;
+  color: #374151;
+  background: rgba(255, 255, 255, 0.88);
+  border: 1px solid #e5e7eb;
+  padding: 2px 6px;
+  border-radius: 999px;
+  z-index: 20;
 }
