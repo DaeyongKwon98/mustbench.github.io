@@ -201,53 +201,60 @@
     ]
   },
   {
-  "id": "mtr-1023323",
-  "title": "Mood Trajectory Reasoning",
-  "task": "MTR",
-  "audio_id": "1023323",
-  "duration": 97,
-  "audio": "assets/audios/MTR_example.mp3",
-  "question": "When is(are) the highest arousal duration(s) in this audio?",
-  "ground_truth_text": "0:57–1:12",
-  "ground_truth": [
-    {
-      "type": "interval",
-      "start": 57,
-      "end": 72,
-      "label": "GT 0:57–1:12"
-    }
-  ],
-  "predictions": [
-    {
-      "model": "MusT",
-      "text": "0:57–1:12",
-      "type": "interval",
-      "start": 57,
-      "end": 72,
-      "kind": "ours"
-    },
-    {
-      "model": "Qwen3 Omni",
-      "text": "0:15–0:29",
-      "type": "interval",
-      "start": 15,
-      "end": 29,
-      "kind": "open"
-    },
-    {
-      "model": "GPT Audio",
-      "text": "1:00–1:30",
-      "type": "interval",
-      "start": 60,
-      "end": 90,
-      "kind": "closed"
-    },
-    {
-      "model": "AudioFlamingo-Next",
-      "text": "16:48-23:76",
-      "type": "text",
-      "kind": "open"
-    }
-  ]
-}
+    "id": "mtr-1023323",
+    "title": "Mood Trajectory Reasoning",
+    "task": "MTR",
+    "audio_id": "1023323",
+    "duration": 97,
+    "audio": "assets/audios/MTR_example.mp3",
+    "question": "When is(are) the highest arousal duration(s) in this audio?",
+    "ground_truth_text": "0:57–1:12",
+    "ground_truth": [
+      {
+        "type": "interval",
+        "start": 57,
+        "end": 72,
+        "label": "GT",
+        "range": "0:57–1:12"
+      }
+    ],
+    "predictions": [
+      {
+        "model": "MusT",
+        "text": "0:57–1:12",
+        "type": "interval",
+        "start": 57,
+        "end": 72,
+        "label": "MusT",
+        "range": "0:57–1:12",
+        "kind": "ours"
+      },
+      {
+        "model": "Qwen3 Omni",
+        "text": "0:15–0:29",
+        "type": "interval",
+        "start": 15,
+        "end": 29,
+        "label": "Qwen3 Omni",
+        "range": "0:15–0:29",
+        "kind": "open"
+      },
+      {
+        "model": "GPT Audio",
+        "text": "1:00–1:30",
+        "type": "interval",
+        "start": 60,
+        "end": 90,
+        "label": "GPT Audio",
+        "range": "1:00–1:30",
+        "kind": "closed"
+      },
+      {
+        "model": "AudioFlamingo-Next",
+        "text": "16:48–23:76",
+        "type": "text",
+        "kind": "open"
+      }
+    ]
+  }
 ]
