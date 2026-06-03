@@ -12,6 +12,8 @@ const COLORS = {
   z: "#2563eb"  // blue
 };
 
+let currentlyPlayingAudio = null;
+
 async function loadJson(path) {
   const response = await fetch(path);
   if (!response.ok) {
@@ -232,16 +234,31 @@ function setupTimelinePlayer(card, example) {
   });
 
   audio.addEventListener("play", () => {
+    if (currentlyPlayingAudio && currentlyPlayingAudio !== audio) {
+      currentlyPlayingAudio.pause();
+    }
+  
+    currentlyPlayingAudio = audio;
+  
     setPlayButtonState(true);
     requestAnimationFrame(updatePlayhead);
   });
 
   audio.addEventListener("pause", () => {
     setPlayButtonState(false);
+  
+    if (currentlyPlayingAudio === audio) {
+      currentlyPlayingAudio = null;
+    }
   });
-
+  
   audio.addEventListener("ended", () => {
     setPlayButtonState(false);
+  
+    if (currentlyPlayingAudio === audio) {
+      currentlyPlayingAudio = null;
+    }
+  
     updatePlayhead();
   });
 
