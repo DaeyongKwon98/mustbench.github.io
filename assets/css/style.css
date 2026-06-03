@@ -559,11 +559,22 @@ pre {
 
 .interval {
   position: absolute;
-  height: 16px;
+  height: 24px;
   border-radius: 999px;
-  opacity: 0.88;
+  opacity: 0.92;
   z-index: 10;
   overflow: visible;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+
+  color: #ffffff;
+  font-size: 11px;
+  font-weight: 800;
+  white-space: nowrap;
+  padding: 0 8px;
 }
 
 .interval::before,
@@ -572,7 +583,7 @@ pre {
   position: absolute;
   top: -4px;
   width: 3px;
-  height: 24px;
+  height: 32px;
   border-radius: 999px;
   background: inherit;
 }
@@ -585,32 +596,13 @@ pre {
   right: 0;
 }
 
-.interval-label {
-  position: absolute;
-  top: -27px;
-  left: 50%;
-  transform: translateX(-50%);
-  white-space: nowrap;
-  font-size: 12px;
-  font-weight: 800;
-  color: white;
-  padding: 3px 7px;
-  border-radius: 8px;
-  z-index: 20;
+.interval-label-inline {
+  color: #ffffff;
+  font-weight: 900;
 }
 
-.interval-range {
-  position: absolute;
-  top: 18px;
-  left: 50%;
-  transform: translateX(-50%);
-  white-space: nowrap;
-  font-size: 11px;
+.interval-range-inline {
+  color: #ffffff;
   font-weight: 700;
-  color: #374151;
-  background: rgba(255, 255, 255, 0.88);
-  border: 1px solid #e5e7eb;
-  padding: 2px 6px;
-  border-radius: 999px;
-  z-index: 20;
+  opacity: 0.95;
 }
