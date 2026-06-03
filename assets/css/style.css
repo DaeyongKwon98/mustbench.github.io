@@ -568,7 +568,6 @@ pre {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 5px;
 
   color: #ffffff;
   font-size: 11px;
@@ -596,13 +595,24 @@ pre {
   right: 0;
 }
 
-.interval-label-inline {
-  color: #ffffff;
+.interval-model-label {
+  position: absolute;
+  left: 50%;
+  top: -22px;
+  transform: translateX(-50%);
+  color: #111827;
+  font-size: 12px;
   font-weight: 900;
+  line-height: 1;
+  white-space: nowrap;
+  pointer-events: none;
 }
 
 .interval-range-inline {
   color: #ffffff;
-  font-weight: 700;
-  opacity: 0.95;
+  font-size: 11px;
+  font-weight: 800;
+  line-height: 1;
+  white-space: nowrap;
+  pointer-events: none;
 }
