@@ -121,7 +121,7 @@ function renderTimeline(timeline, example) {
         gt,
         example.duration,
         gtColor,
-        isMTR ? 28 : 44
+        isMTR ? 22 : 44
       );
     }
   });
