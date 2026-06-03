@@ -64,11 +64,16 @@ function addIntervalMarker(timeline, item, duration, color, top) {
   interval.style.background = color;
 
   const label = document.createElement("div");
-  label.className = "marker-label";
+  label.className = "interval-label";
   label.style.background = color;
   label.textContent = item.label;
 
+  const range = document.createElement("div");
+  range.className = "interval-range";
+  range.textContent = item.range || `${formatTime(item.start)}–${formatTime(item.end)}`;
+
   interval.appendChild(label);
+  interval.appendChild(range);
   timeline.appendChild(interval);
 }
 
@@ -118,7 +123,8 @@ function renderTimeline(timeline, example) {
     }
 
     const color = COLORS[prediction.kind] || COLORS.other;
-    const label = `${prediction.model}: ${prediction.text}`;
+    const label = prediction.label || prediction.model;
+    const range = prediction.range || prediction.text;
 
     if (prediction.type === "point") {
       addPointMarker(
@@ -137,7 +143,8 @@ function renderTimeline(timeline, example) {
         {
           start: prediction.start,
           end: prediction.end,
-          label
+          label,
+          range
         },
         example.duration,
         color,
