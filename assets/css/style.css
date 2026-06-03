@@ -317,10 +317,7 @@ pre {
 }
 
 .demo-card-header h3 {
-  margin: 4px 0 0;
-  font-size: 24px;
-  line-height: 1.2;
-  letter-spacing: -0.03em;
+  margin: 0;
 }
 
 .demo-task {
@@ -555,6 +552,20 @@ pre {
   text-transform: none;
   background: transparent;
   border-left: 0;
+}
+
+.demo-title-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.demo-title {
+  margin: 0;
+  font-size: 24px;
+  line-height: 1.2;
+  letter-spacing: -0.03em;
 }
 
 .interval {
