@@ -65,13 +65,14 @@ function addIntervalMarker(timeline, item, duration, color, top) {
   interval.style.top = `${top}px`;
   interval.style.background = color;
 
-  const label = document.createElement("span");
-  label.className = "interval-label-inline";
+  const label = document.createElement("div");
+  label.className = "interval-model-label";
   label.textContent = item.label;
 
-  const range = document.createElement("span");
+  const range = document.createElement("div");
   range.className = "interval-range-inline";
-  range.textContent = item.range || `${formatTime(item.start)}–${formatTime(item.end)}`;
+  range.textContent =
+    item.range || `${formatTime(item.start)}–${formatTime(item.end)}`;
 
   interval.appendChild(label);
   interval.appendChild(range);
@@ -120,7 +121,7 @@ function renderTimeline(timeline, example) {
         gt,
         example.duration,
         gtColor,
-        isMTR ? 34 : 44
+        isMTR ? 28 : 44
       );
     }
   });
@@ -147,7 +148,9 @@ function renderTimeline(timeline, example) {
       );
     } else if (prediction.type === "interval") {
       const isMTR = String(example.task || "").toUpperCase() === "MTR";
-
+      const label = prediction.label || prediction.model;
+      const range = prediction.range || prediction.text;
+      
       addIntervalMarker(
         timeline,
         {
@@ -158,7 +161,7 @@ function renderTimeline(timeline, example) {
         },
         example.duration,
         color,
-        isMTR ? 70 + index * 34 : 72 + index * 28
+        isMTR ? 76 + index * 34 : 72 + index * 28
       );
     }
   });
