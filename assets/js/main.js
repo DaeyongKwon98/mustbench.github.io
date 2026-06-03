@@ -342,9 +342,9 @@ function renderDemoCard(example, index) {
 
   card.innerHTML = `
     <div class="demo-card-header">
-      <div>
+      <div class="demo-title-row">
         <div class="demo-task">${escapeHtml(example.task || "Example")}</div>
-        <h3>${escapeHtml(example.title || `Example ${index + 1}`)}</h3>
+        <h3 class="demo-title">${escapeHtml(example.title || `Example ${index + 1}`)}</h3>
       </div>
       ${
         example.audio_id
